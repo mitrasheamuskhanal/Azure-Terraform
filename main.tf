@@ -17,3 +17,10 @@ resource "azurerm_resource_group" "MSK" {
   name     = "Mitra"
   location = "Eastus"
 }
+
+resource "azurerm_virtual_network" "MSK-vn" {
+  name                = "MSK-Network"
+  resource_group_name = azurerm_resource_group.MSK.name
+  location            = azurerm_resource_group.MSK.location
+  address_space       = ["10.0.0.0/16"]
+}
